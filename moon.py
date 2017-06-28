@@ -2,7 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from keras.models import Sequential
 from keras.layers import Dense, Activation
-from keras.optimizers import SGD
+#from keras.optimizers import SGD
+from keras.optimizers import Adam
 from sklearn import datasets
 from sklearn.model_selection import train_test_split
 
@@ -22,7 +23,7 @@ model.add(Activation("relu"))
 model.add(Dense(1))
 model.add(Activation("sigmoid"))
 
-model.compile(loss="binary_crossentropy", optimizer=SGD(lr=0.05), metrics=["accuracy"])
+model.compile(loss="binary_crossentropy", optimizer=Adam(lr=0.001, beta_1=0.9, beta_2=0.999), metrics=["accuracy"])
 
 hist = model.fit(x_train, y_train, epochs=500, batch_size=20, validation_data=(x_train, y_train))
 
