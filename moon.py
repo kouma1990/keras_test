@@ -15,8 +15,10 @@ x_train, x_test, y_train, y_test = train_test_split(X, y, train_size=0.8)
 
 model = Sequential()
 
-model.add(Dense(3, input_dim=2))
-model.add(Activation("sigmoid"))
+model.add(Dense(100, input_dim=2, init="he_normal"))
+model.add(Activation("relu"))
+model.add(Dense(100, input_dim=2, init="he_normal"))
+model.add(Activation("relu"))
 model.add(Dense(1))
 model.add(Activation("sigmoid"))
 
